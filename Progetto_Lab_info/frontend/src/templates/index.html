@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select onchange="chiamaServer(this)">
+        <option value="">Diocampero</option>
+        {% for url in urls %}
+            <option value="{{ url }}">{{ url }}</option>
+        {% endfor %}
+    </select>
+
+    <textarea id="risultato1" rows="10" cols="50"></textarea>
+    <textarea id="risultato2" rows="10" cols="50"></textarea>
+    <br>
+    <input type="number" id="precision" placeholder="precision" readonly>
+    <input type="number" id="recall" placeholder="recall" readonly>
+    <input type="number" id="f1_score" placeholder="f1_score" readonly>
+
+
+    <script>
+        async function chiamaServer(select) {
+            const url = select.value;
+            const risposta = await fetch(`/elabora?url=${encodeURIComponent(url)}`);
+            const dati = await risposta.json();
+            document.getElementById("risultato1").value = dati["data"]["parsed_text"];
+            document.getElementById("risultato2").value = dati["data"]["html_text"];
+            document.getElementById("precision").value = dati["precision"];
+            document.getElementById("recall").value = dati["recall"];
+            document.getElementById("f1_score").value = dati["f1"]; 
+        }
+    </script>
+
+</body>
+</html>
