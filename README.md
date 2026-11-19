@@ -2,7 +2,7 @@
 
 Servizio che scarica una pagina web, ne estrae il testo principale e lo confronta con un *gold standard* scritto a mano, calcolando **precision, recall e F1 a livello di token**. Un'interfaccia web permette di provare il parser su un URL e vedere la valutazione.
 
-Domini supportati (`domain.json`): `en.wikipedia.org`, `www.usa.gov`, `www.latimes.com`.
+Domini supportati (`domain.json`): `en.wikipedia.org`, `www.usa.gov`, `www.latimes.com`, `www.treccani.it`.
 
 ## Come funziona
 
@@ -23,10 +23,7 @@ Domini supportati (`domain.json`): `en.wikipedia.org`, `www.usa.gov`, `www.latim
 
 ## Avvio con Docker
 
-La versione completa, con Dockerfile e `docker-compose`, è in `Progetto_Lab_info/`:
-
 ```bash
-cd Progetto_Lab_info
 docker compose up --build
 ```
 
@@ -35,9 +32,13 @@ Backend su http://localhost:8003 (documentazione interattiva su `/docs`), fronte
 ## Struttura
 
 ```
-Progetto_Lab_info/   versione con Docker (backend, frontend, parser, gold standard)
-gl_texts/            testi di riferimento
+backend/             API FastAPI
+frontend/            interfaccia web
+parser/              estrazione del testo e metriche di valutazione
 gs_data/             gold standard
+gl_texts/            testi di riferimento
+domain.json          domini supportati
+docker-compose.yaml  avvio di backend e frontend
 ```
 
 ## Autori
