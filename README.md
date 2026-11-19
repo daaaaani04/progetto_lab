@@ -8,7 +8,7 @@ Domini supportati (`domain.json`): `en.wikipedia.org`, `www.usa.gov`, `www.latim
 
 - **Parser** (`parser/parsing.py`): scarica la pagina con [crawl4ai](https://github.com/unclecode/crawl4ai), la converte in testo pulito con BeautifulSoup e mistune e valuta il risultato rispetto al gold standard.
 - **Backend** (FastAPI, porta 8003): espone il parser e la valutazione.
-- **Frontend** (Flask + Jinja, porta 8004): pagina per provare il sistema dal browser.
+- **Frontend** (FastAPI + Jinja, porta 8004): pagina per provare il sistema dal browser.
 
 ### Endpoint principali del backend
 
@@ -42,4 +42,4 @@ gs_data/             gold standard
 
 ## Autori
 
-Danilo Cimmino e compagni di corso. Università Sapienza di Roma.
+Danilo Cimmino
